@@ -127,15 +127,23 @@ Real-time progress updates
 Immediate result display
 
 ## ⚙️ Command Line Reference
-Target Options
-Option	Description
+- Target Options
+- Option	Description
 -u, --url URL	Target URL (required for batch mode)
+
 -p, --param PARAM	Specific parameter to test
+
 -X, --method {GET,POST}	HTTP method (default: GET)
+
 --discover-params	Auto-discover parameters from forms/JS
-Request Options
-Option	Description
+
+- Request Options
+
+- Option	Description
+
 -H, --header HEADER	Custom HTTP header (key=value)
+
 -P, --params PARAMS	Static parameters (key=value)
+
 `-A, --user-agent AGENT	
 
