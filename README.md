@@ -12,96 +12,130 @@ Advanced SQL Injection tool - Enterprise-grade security assessment tool for comp
 - **Batch Processing**: Scan multiple URLs from a file
 - **Interactive Mode**: User-friendly interactive scanning
 
-## Installation
-
+## 🛠️ Installation
 ```bash
 git clone https://github.com/yourusername/sqli-scanner.git
 cd sqli-scanner
 pip install -r requirements.txt
+```
+## Prerequisites
+Python 3.7 or higher
+pip package manage
 
-## Requirements
-Python 3.7+
+## ✨ Features
+🔍 Detection Methods
+- Error-based SQL Injection - Classic error message detection
 
-requests
+- Union-based SQL Injection - UNION query exploitation
 
-urllib3
+- Boolean-based Blind SQLi - True/false condition testing
 
-Usage
-Basic Scan
-bash
-python sqli_scanner.py -u "http://example.com/page?id=1" -p id
-Interactive Mode
-bash
-python sqli_scanner.py
-Advanced Scan
-bash
-python sqli_scanner.py -u "http://example.com/login" -X POST -p username \
-  -H "Content-Type=application/json" --threads 10 -o scan_results --level 3
-Batch Scan
-bash
-python sqli_scanner.py -i urls.txt -b -o batch_scan
-Command Line Options
-Target Options
--u, --url: Target URL
+- Time-based Blind SQLi - Response timing analysis
 
--p, --param: Specific parameter to test
+- Stacked Queries - Multiple query execution
 
--X, --method: HTTP method (GET/POST)
+- Out-of-Band (OOB) - External network call testing
 
---discover-params: Automatically discover parameters
+- Content-based Analysis - Response comparison techniques
 
-Request Options
--H, --header: Custom HTTP headers
+.. 🛠️ Advanced Capabilities
 
--A, --user-agent: Custom User-Agent
+- Automatic Parameter Discovery - From URLs, forms, and JavaScript
 
---proxy: HTTP proxy
+- DBMS Fingerprinting - MySQL, MSSQL, Oracle, PostgreSQL detection
 
---timeout: Request timeout
+- WAF Bypass Techniques - Payload obfuscation and encoding
 
--k, --insecure: Skip SSL verification
+- Multi-threaded Scanning - Concurrent request processing
 
-Scan Options
---dbms: Target DBMS (auto/mysql/mssql/oracle/postgres)
+- Batch Processing - Scan multiple targets from file
 
---level: Scan intensity (1-3)
+- Interactive Mode - User-friendly guided scanning
 
---tests: Specific tests to run
+- Comprehensive Reporting - JSON, CSV, and HTML outputs
 
---threads: Number of concurrent threads
+.. 📊 Output & Reporting
+JSON Reports - Structured data for automation
 
-Output Options
--o, --output: Output file
+CSV Export - Spreadsheet-friendly format
 
---format: Output format (json/csv/html/all)
+HTML Reports - Visual, human-readable format
 
--v, --verbose: Verbose output
+Scan Summary - Executive overview with statistics
 
---debug: Debug mode
+Detailed Findings - Individual test results with confidence levels
 
-Output Formats
-The scanner generates three report formats:
+## 📖 Usage Examples
+Basic Scanning
+```bash
+python sqli_scanner.py -u "http://example.com/search?q=test" -p q
+```
+# Auto-discover parameters
+```bash
+python sqli_scanner.py -u "http://example.com/login" --discover-params
+```
+# POST request testing
+```bash
+python sqli_scanner.py -u "http://example.com/login" -X POST -p username
+```
 
-JSON: Structured data for programmatic processing
-
-CSV: Spreadsheet-friendly format
-
-HTML: Human-readable web report
-
-Examples
-Test Specific Parameter
-bash
-python sqli_scanner.py -u "http://test.com/search?q=test" -p q
-Full Scan with Custom Headers
-bash
-python sqli_scanner.py -u "http://test.com/api" -X POST \
-  -H "Authorization: Bearer token" -H "Content-Type: application/json" \
-  --discover-params --level 3
+# High-intensity scan with custom headers
+```bash
+python sqli_scanner.py -u "http://api.example.com/data" \
+  -H "Authorization: Bearer token" \
+  -H "Content-Type: application/json" \
+  --level 3 \
+  --threads 15
+```
+# Specific DBMS targeting
+```bash
+python sqli_scanner.py -u "http://example.com" --dbms mysql --tests union,boolean
+```
+# With proxy support for debugging
+```bash
+python sqli_scanner.py -u "http://example.com" --proxy "http://127.0.0.1:8080"
+```
+# WAF bypass mode
+```bash
+python sqli_scanner.py -u "http://example.com" --waf-bypass --encoding double-url
 Batch Processing
-bash
-python sqli_scanner.py -i targets.txt -b --threads 5 -o results
-Legal Disclaimer
-This tool is intended for security testing and educational purposes only. Only use on systems you own or have explicit permission to test. The developers are not responsible for any misuse or damage caused by this tool.
+```
+```bash
+# Scan multiple URLs from file
+python sqli_scanner.py -i targets.txt -b -o batch_results
+```
+# Resume interrupted scan
+```bash
+python sqli_scanner.py --resume previous_scan.json
+```
+# Batch scan with delay between requests
+```bash
+python sqli_scanner.py -i targets.txt --delay 2 --threads 3
+```
+## Interactive Mode
+```bash
+python sqli_scanner.py
+```
+Interactive mode provides a guided experience with:
 
-License
-MIT License - see LICENSE file for details.
+URL input validation
+
+Parameter discovery and selection
+
+Real-time progress updates
+
+Immediate result display
+
+## ⚙️ Command Line Reference
+Target Options
+Option	Description
+-u, --url URL	Target URL (required for batch mode)
+-p, --param PARAM	Specific parameter to test
+-X, --method {GET,POST}	HTTP method (default: GET)
+--discover-params	Auto-discover parameters from forms/JS
+Request Options
+Option	Description
+-H, --header HEADER	Custom HTTP header (key=value)
+-P, --params PARAMS	Static parameters (key=value)
+`-A, --user-agent AGENT	
+
