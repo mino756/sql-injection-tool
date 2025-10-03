@@ -1,4 +1,4 @@
-# sql-injection-tool
+# sql-injection-tool v2.0.1
 
 A lightweight Python tool for testing SQL Injection vulnerabilities.
 
