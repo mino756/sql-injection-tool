@@ -185,7 +185,7 @@ A: No — never test production or third-party sites without explicit permission
 If you find a bug or a security issue:
 
 * Open an [Issue](https://github.com/mino756/sql-injection-tool/issues)
-* Or email: [your-email@example.com](mailto:your-email@example.com) (replace with a real contact)
+* Or email: [your-email@example.com](otfmino@gmail.com) (replace with a real contact)
 
 ---
 
